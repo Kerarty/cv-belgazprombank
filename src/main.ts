@@ -48,13 +48,14 @@ function hero(): HTMLElement {
             { class: 'hero__actions' },
             el('a', { class: 'btn btn--primary', href: '#case' }, 'Пройти кейс — 5 минут'),
             el(
-              'button',
+              'a',
               {
                 class: 'btn',
-                type: 'button',
-                onClick: () => window.print(),
+                href: 'resume.pdf',
+                download: 'Кукар_ЯМ_резюме.pdf',
+                title: 'Статичное A4-резюме в PDF',
               },
-              'Версия для печати',
+              'Скачать PDF',
             ),
           ),
         ),

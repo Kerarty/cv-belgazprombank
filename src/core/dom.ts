@@ -13,6 +13,7 @@ interface Attrs {
   href?: string;
   target?: string;
   rel?: string;
+  download?: string;
   title?: string;
   placeholder?: string;
   ariaLabel?: string;
