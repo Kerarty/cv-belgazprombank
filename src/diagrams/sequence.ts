@@ -56,7 +56,7 @@ const COLORS = {
 
 export function renderSequence(protocol: Protocol): SVGSVGElement {
   const msgs = protocol === 'rest' ? REST_MESSAGES : SOAP_MESSAGES;
-  const W = 720;
+  const W = 744;
   const rowH = 48;
   const top = 64;
   const H = top + msgs.length * rowH + 28;

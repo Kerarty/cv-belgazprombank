@@ -192,9 +192,15 @@ button {
   align-items: start;
 }
 
+/* Грид-айтемы не должны раздуваться min-content пайплайна/кода. */
+.layout__case,
+.layout .resume {
+  min-width: 0;
+}
+
 @media (max-width: 980px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

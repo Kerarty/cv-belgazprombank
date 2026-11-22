@@ -52,6 +52,9 @@ export function renderAcceptance(root: HTMLElement, goNext: () => void): void {
   } else {
     const { defectsFound, falseAlarms, violationsCorrect } = scoreAcceptance();
     const allRight = falseAlarms === 0 && defectsFound === totalRealDefects() && violationsCorrect === totalRealDefects();
+    const bannerText = allRight
+      ? `Решение: возвращено поставщику с замечаниями — все ${totalRealDefects()} дефекта найдены, требования нарушений указаны верно. Приёмка не пройдена — и это правильный результат.`
+      : `Дефекты найдены: ${defectsFound} из ${totalRealDefects()}, ложных тревог: ${falseAlarms}, нарушения указаны верно: ${violationsCorrect}. Проверьте пояснения ниже — и перепройдите сценарии.`;
     actions.append(
       el(
         'div',
@@ -59,9 +62,8 @@ export function renderAcceptance(root: HTMLElement, goNext: () => void): void {
           class: `verdict-banner ${allRight ? 'verdict-banner--ok' : 'verdict-banner--mixed'}`,
           style: 'flex:1;min-width:280px',
         },
-        allRight
-          ? `${mark(true)} Решение: возвращено поставщику с замечаниями — все ${totalRealDefects()} дефекта найдены, требования нарушений указаны верно. Приёмка не пройдена — и это правильный результат.`
-          : `${mark(false)} Дефекты найдены: ${defectsFound} из ${totalRealDefects()}, ложных тревог: ${falseAlarms}, нарушения указаны верно: ${violationsCorrect}. Проверьте пояснения ниже — и перепройдите сценарии.`,
+        mark(allRight),
+        el('span', {}, bannerText),
       ),
       el(
         'button',
