@@ -28,6 +28,7 @@ interface Attrs {
   onKeyDown?: (el: HTMLElement, ev: KeyboardEvent) => void;
   onDragStart?: (el: HTMLElement, ev: DragEvent) => void;
   onDragOver?: (el: HTMLElement, ev: DragEvent) => void;
+  onDragLeave?: (el: HTMLElement, ev: DragEvent) => void;
   onDragEnd?: (el: HTMLElement, ev: DragEvent) => void;
   onDrop?: (el: HTMLElement, ev: DragEvent) => void;
 }
