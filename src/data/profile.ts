@@ -81,17 +81,15 @@ const skills: Skill[] = [
 
 export const PROFILE = {
   name: 'Кукар Я.М.',
-  role: 'Специалист управления внедрения и развития ИС · системный аналитик',
+  role: 'Специалист отдела развития информационных систем розничного бизнеса',
   tagline:
     'Превращаю разговоры с заказчиком в работающие системы: интервью → требования → SRS → приёмка. Слева этот путь можно пройти руками — за 5 минут.',
   location: 'Минск',
 
   contacts: [
     { label: 'GitHub', value: 'github.com/Kerarty', href: 'https://github.com/Kerarty' },
-    // TODO: заполнить реальные контакты перед отправкой работодателю
-    { label: 'Email', value: 'email@example.com', href: '' },
-    { label: 'Телефон', value: '+375 (00) 000-00-00', href: '' },
-    { label: 'Telegram', value: '@username', href: '' },
+    { label: 'Email', value: 'kukar.yar@gmail.com', href: 'mailto:kukar.yar@gmail.com' },
+    { label: 'Telegram', value: '@Kerarty', href: 'https://t.me/Kerarty' },
   ],
 
   about:

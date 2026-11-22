@@ -73,7 +73,7 @@ function footer(): HTMLElement {
   return el(
     'footer',
     { class: 'footer' },
-    'Досье подготовлено для вакансии «Специалист управления внедрения и развития ИС» · TypeScript + Vite · Docker · ',
+    'Досье подготовлено для вакансии «Специалист отдела развития информационных систем розничного бизнеса» · TypeScript + Vite · Docker · ',
     el(
       'a',
       { href: 'https://github.com/Kerarty/cv-belgazprombank', target: '_blank', rel: 'noopener' },
@@ -82,7 +82,7 @@ function footer(): HTMLElement {
     ' · ',
     el(
       'a',
-      { href: 'https://hh.ru/vacancy/138053420', target: '_blank', rel: 'noopener' },
+      { href: 'https://rabota.by/vacancy/133855231', target: '_blank', rel: 'noopener' },
       'вакансия',
     ),
   );
