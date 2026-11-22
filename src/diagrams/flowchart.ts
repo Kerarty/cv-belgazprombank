@@ -27,16 +27,16 @@ const TO_BE: FlowStep[] = [
 ];
 
 const COLORS = {
-  accent: '#0b4f8a',
-  ok: '#17754a',
-  fail: '#b23a2f',
-  plain: '#5b6b7c',
-  softAccent: '#e3eef8',
-  softOk: '#e2f3ea',
-  softFail: '#fbe9e6',
-  softPlain: '#f2f5f9',
-  ink: '#17222e',
-  muted: '#5b6b7c',
+  accent: '#1c1a15',
+  ok: '#2e6b4f',
+  fail: '#b3271a',
+  plain: '#5f594c',
+  softAccent: '#efece2',
+  softOk: '#e4efe6',
+  softFail: '#f4e3dd',
+  softPlain: '#f1eee5',
+  ink: '#1c1a15',
+  muted: '#5f594c',
 };
 
 export function renderFlow(mode: FlowMode): SVGSVGElement {
@@ -74,7 +74,7 @@ export function renderFlow(mode: FlowMode): SVGSVGElement {
     box.setAttribute('y', String(y));
     box.setAttribute('width', String(boxW));
     box.setAttribute('height', String(h));
-    box.setAttribute('rx', '9');
+    box.setAttribute('rx', '2');
     box.setAttribute('fill', fill);
     box.setAttribute('stroke', stroke);
     box.setAttribute('stroke-width', '1.3');
@@ -110,7 +110,7 @@ function flowText(x: number, y: number, content: string, opts: { size?: number; 
   node.setAttribute('fill', opts.fill ?? COLORS.ink);
   if (opts.bold) node.setAttribute('font-weight', '600');
   node.setAttribute('text-anchor', opts.anchor ?? 'start');
-  node.setAttribute('font-family', "'Segoe UI', system-ui, sans-serif");
+  node.setAttribute('font-family', "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif");
   node.textContent = content;
   return node;
 }

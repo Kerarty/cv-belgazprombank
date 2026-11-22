@@ -205,7 +205,8 @@ function renderSrs(): HTMLElement {
       el(
         'div',
         { class: 'srs__todo' },
-        `⚠ ${notFound} треб. помечено «анализ»: не всплыли на интервью и добавлены по результатам изучения регламентов. ` +
+        el('span', { class: 'srs__todo-label' }, 'Примечание аналитика'),
+        `${notFound} треб. помечено «анализ»: не всплыли на интервью и добавлены по результатам изучения регламентов. ` +
           'На согласовании SRS такие требования проверяются в первую очередь — Interview coverage никогда не бывает 100%.',
       ),
     );
@@ -259,7 +260,7 @@ Content-Type: application/soap+xml
   return el(
     'div',
     { class: 'payload' },
-    el('div', { class: 'artifact__bar', style: 'border-radius:10px' }, el('span', {}, protocol === 'rest' ? 'Пример запроса · JSON' : 'Пример запроса · SOAP-конверт (контракт WSDL)')),
+    el('div', { class: 'artifact__bar' }, el('span', {}, protocol === 'rest' ? 'Пример запроса · JSON' : 'Пример запроса · SOAP-конверт (контракт WSDL)')),
     el('pre', { class: 'code', html: highlight(code, lang) }),
     el(
       'p',

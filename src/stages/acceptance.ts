@@ -58,12 +58,13 @@ export function renderAcceptance(root: HTMLElement, goNext: () => void): void {
     actions.append(
       el(
         'div',
-        {
-          class: `verdict-banner ${allRight ? 'verdict-banner--ok' : 'verdict-banner--mixed'}`,
-          style: 'flex:1;min-width:280px',
-        },
-        mark(allRight),
-        el('span', {}, bannerText),
+        { class: 'verdict-line', style: 'flex:1' },
+        el(
+          'div',
+          { class: `verdict-banner ${allRight ? 'verdict-banner--ok' : 'verdict-banner--mixed'}` },
+          mark(allRight),
+          el('span', {}, bannerText),
+        ),
       ),
       el(
         'button',
@@ -90,14 +91,9 @@ function scenarioNode(scenario: (typeof CASE.acceptance)[number], done: boolean)
       el(
         'button',
         {
-          class: `btn btn--outline ${active ? (option === 'pass' ? 'chip--ok' : 'chip--fail') : ''}`,
+          class: `verdict-btn verdict-btn--${option} ${active ? `is-active--${option}` : ''}`,
           type: 'button',
           disabled: done && verdict === option,
-          style: active
-            ? option === 'pass'
-              ? 'background:var(--ok-soft);border-color:#bfe3d0;color:var(--ok);font-weight:700'
-              : 'background:var(--fail-soft);border-color:#ecc8c2;color:var(--fail);font-weight:700'
-            : '',
           onClick: () => setVerdict(scenario.id, option),
         },
         label,

@@ -1,6 +1,17 @@
-// Точка входа: хедер, каркас «кейс + резюме», футер.
+// Точка входа: титульный лист, каркас «кейс + досье», колофон.
 
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-sans/700.css';
+import '@fontsource/ibm-plex-serif/400.css';
+import '@fontsource/ibm-plex-serif/700.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
+import '@fontsource/ibm-plex-mono/700.css';
 import './styles/main.css';
+
 import { PROFILE } from './data/profile.ts';
 import { el } from './core/dom.ts';
 import { store } from './core/state.ts';
@@ -15,32 +26,43 @@ function hero(): HTMLElement {
     { class: 'hero' },
     el(
       'div',
-      { class: 'hero__inner' },
-      el(
-        'span',
-        { class: 'hero__badge' },
-        el('span', { class: 'dot', ariaHidden: 'true' }),
-        'Резюме-кейс · пройдите мою работу руками',
-      ),
-      el('h1', { class: 'hero__name' }, PROFILE.name),
-      el('div', { class: 'hero__role' }, PROFILE.role),
-      el('p', { class: 'hero__tagline' }, PROFILE.tagline),
+      { class: 'hero__sheet' },
       el(
         'div',
-        { class: 'hero__actions' },
+        { class: 'hero__topline' },
+        el('span', { class: 'is-accent' }, 'Личное дело'),
+        el('span', {}, 'системный аналитик'),
+        el('span', {}, 'Минск · 2026'),
+      ),
+      el(
+        'div',
+        { class: 'hero__body' },
         el(
-          'a',
-          { class: 'btn btn--primary', href: '#case' },
-          '▶ Пройти кейс (5 минут)',
+          'div',
+          { class: 'hero__intro' },
+          el('h1', { class: 'hero__name' }, PROFILE.name),
+          el('div', { class: 'hero__role' }, PROFILE.role),
+          el('p', { class: 'hero__tagline' }, PROFILE.tagline),
+          el(
+            'div',
+            { class: 'hero__actions' },
+            el('a', { class: 'btn btn--primary', href: '#case' }, 'Пройти кейс — 5 минут'),
+            el(
+              'button',
+              {
+                class: 'btn',
+                type: 'button',
+                onClick: () => window.print(),
+              },
+              'Версия для печати',
+            ),
+          ),
         ),
         el(
-          'button',
-          {
-            class: 'btn btn--ghost',
-            type: 'button',
-            onClick: () => window.print(),
-          },
-          '⭳ Скачать PDF',
+          'div',
+          { class: 'stamp', ariaHidden: 'true' },
+          el('span', { class: 'stamp__word' }, 'К рассмотрению'),
+          el('span', { class: 'stamp__sub' }, 'BPB-2026-11 · резюме-кейс'),
         ),
       ),
     ),
@@ -51,7 +73,7 @@ function footer(): HTMLElement {
   return el(
     'footer',
     { class: 'footer' },
-    'Интерактивное резюме · TypeScript + Vite · Docker · ',
+    'Досье подготовлено для вакансии «Специалист управления внедрения и развития ИС» · TypeScript + Vite · Docker · ',
     el(
       'a',
       { href: 'https://github.com/Kerarty/cv-belgazprombank', target: '_blank', rel: 'noopener' },
@@ -70,7 +92,7 @@ if (app) {
   app.append(hero());
 
   const caseColumn = el('div', { class: 'layout__case' });
-  const resumeColumn = el('aside', { class: 'resume', ariaLabel: 'Резюме' });
+  const resumeColumn = el('aside', { class: 'resume', ariaLabel: 'Досье: резюме' });
   const layout = el('main', { class: 'layout' }, caseColumn, resumeColumn);
   app.append(layout);
 

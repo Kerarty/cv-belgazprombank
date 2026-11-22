@@ -51,7 +51,7 @@ export function renderResults(root: HTMLElement): void {
   );
   root.append(map);
 
-  // --- Итоговый вердикт ---
+  // --- Итоговый вердикт: решение + штамп ---
   const bannerText =
     percent >= 70
       ? 'Так выглядит моя ежедневная работа. Готов обсудить кейс на интервью — в том числе то, что вы сделали иначе.'
@@ -60,12 +60,17 @@ export function renderResults(root: HTMLElement): void {
     'div',
     {
       class: `verdict-banner ${percent >= 70 ? 'verdict-banner--ok' : 'verdict-banner--mixed'}`,
-      style: 'margin-top:16px',
     },
     mark(true),
     el('span', {}, bannerText),
   );
-  root.append(banner);
+  const stamp = el(
+    'div',
+    { class: 'stamp', ariaHidden: 'true' },
+    el('span', { class: 'stamp__word' }, percent >= 70 ? 'Утверждено' : 'Принято'),
+    el('span', { class: 'stamp__sub' }, `${CASE.id} · кейс`),
+  );
+  root.append(el('div', { class: 'verdict-line' }, banner, stamp));
 
   root.append(
     el(
@@ -99,6 +104,7 @@ function mapRow(stage: string, duty: string): HTMLElement {
     'div',
     { class: 'map__row' },
     el('span', { class: 'map__stage' }, stage),
+    el('span', { class: 'map__leader', ariaHidden: 'true' }),
     el('span', { class: 'map__duty' }, duty),
   );
 }

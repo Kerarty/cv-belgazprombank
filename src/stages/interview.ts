@@ -22,27 +22,42 @@ export function renderInterview(root: HTMLElement, goNext: () => void): void {
     ),
   );
 
-  // --- Диалог ---
-  const chat = el('div', { class: 'chat', role: 'log', ariaLabel: 'Ход интервью' });
+  // --- Протокол интервью ---
+  const chat = el('div', { class: 'chat', role: 'log', ariaLabel: 'Протокол интервью' });
   chat.append(
     el(
       'div',
-      { class: 'msg msg--customer' },
-      el('div', { class: 'msg__who' }, CASE.customer),
-      CASE.brief,
+      { class: 'msg msg--customer msg--brief' },
+      el('div', { class: 'msg__main' },
+        el('div', { class: 'msg__who' }, `Входящее обращение · ${CASE.customer}`),
+        el('p', {}, CASE.brief),
+      ),
     ),
   );
 
   for (const qId of asked) {
     const q = CASE.questions.find((item) => item.id === qId);
     if (!q) continue;
-    chat.append(el('div', { class: 'msg msg--analyst' }, el('div', { class: 'msg__who' }, 'Аналитик'), q.question));
+    chat.append(
+      el(
+        'div',
+        { class: 'msg msg--analyst' },
+        el('span', { class: 'msg__side', ariaHidden: 'true' }, el('span', { class: 'msg__speaker' }, 'АН')),
+        el('div', { class: 'msg__main' },
+          el('div', { class: 'msg__who' }, 'Аналитик'),
+          el('p', {}, q.question),
+        ),
+      ),
+    );
     const answer = el(
       'div',
       { class: 'msg msg--customer' },
-      el('div', { class: 'msg__who' }, CASE.customer),
-      q.answer,
-      el('div', { class: 'msg__why' }, q.why),
+      el('span', { class: 'msg__side', ariaHidden: 'true' }, el('span', { class: 'msg__speaker' }, 'ИК')),
+      el('div', { class: 'msg__main' },
+        el('div', { class: 'msg__who' }, CASE.customer),
+        el('p', {}, q.answer),
+        el('div', { class: 'msg__why' }, q.why),
+      ),
     );
     const revealed = q.reveals.map((id) => {
       const req = CASE.requirements.find((item) => item.id === id);
@@ -65,7 +80,7 @@ export function renderInterview(root: HTMLElement, goNext: () => void): void {
       ),
     );
     const bank = el('div', { class: 'qbank' });
-    for (const q of unasked) {
+    unasked.forEach((q, index) => {
       bank.append(
         el(
           'button',
@@ -81,11 +96,11 @@ export function renderInterview(root: HTMLElement, goNext: () => void): void {
               });
             },
           },
-          el('span', { class: 'qcard__icon', ariaHidden: 'true' }, '❓'),
+          el('span', { class: 'qcard__num', ariaHidden: 'true' }, `в.${index + 1}`),
           el('span', {}, q.question),
         ),
       );
-    }
+    });
     root.append(bank);
   }
 

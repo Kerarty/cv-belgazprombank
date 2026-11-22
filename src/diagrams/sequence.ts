@@ -45,13 +45,13 @@ const SOAP_MESSAGES: Msg[] = [
 ];
 
 const COLORS = {
-  accent: '#0b4f8a',
-  ok: '#17754a',
-  fail: '#b23a2f',
-  muted: '#5b6b7c',
-  line: '#c4d2e0',
-  ink: '#17222e',
-  soft: '#e3eef8',
+  accent: '#1c1a15',
+  ok: '#2e6b4f',
+  fail: '#b3271a',
+  muted: '#5f594c',
+  line: '#b5ad9a',
+  ink: '#1c1a15',
+  soft: '#efece2',
 };
 
 export function renderSequence(protocol: Protocol): SVGSVGElement {
@@ -131,7 +131,7 @@ function rect(x: number, y: number, w: number, h: number, fill: string, stroke: 
   node.setAttribute('y', String(y));
   node.setAttribute('width', String(w));
   node.setAttribute('height', String(h));
-  node.setAttribute('rx', '8');
+  node.setAttribute('rx', '2');
   node.setAttribute('fill', fill);
   node.setAttribute('stroke', stroke);
   node.setAttribute('stroke-width', '1.2');
@@ -157,7 +157,7 @@ function text(x: number, y: number, content: string, opts: { size?: number; bold
   node.setAttribute('fill', opts.fill ?? COLORS.ink);
   if (opts.bold) node.setAttribute('font-weight', '600');
   node.setAttribute('text-anchor', opts.anchor ?? 'start');
-  node.setAttribute('font-family', "'Segoe UI', system-ui, sans-serif");
+  node.setAttribute('font-family', "'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif");
   node.textContent = content;
   return node;
 }
