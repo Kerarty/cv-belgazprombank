@@ -90,6 +90,7 @@ export const PROFILE = {
     { label: 'GitHub', value: 'github.com/Kerarty', href: 'https://github.com/Kerarty' },
     { label: 'Email', value: 'kukar.yar@gmail.com', href: 'mailto:kukar.yar@gmail.com' },
     { label: 'Telegram', value: '@Kerarty', href: 'https://t.me/Kerarty' },
+    { label: 'Телефон', value: '+375 44 783-84-89', href: 'tel:+375447838489' },
   ],
 
   about:
@@ -100,8 +101,7 @@ export const PROFILE = {
   education: {
     university: 'БГУИР',
     faculty: 'Факультет информационных технологий и управления (ФИТУ) · кафедра вычислительных методов и программирования (ВМИП)',
-    // TODO: уточнить годы обучения
-    detail: 'Информационные системы и технологии',
+    detail: 'Информационные системы и технологии · 2023—2027',
   },
 
   projects,
