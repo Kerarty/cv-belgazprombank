@@ -1,0 +1,16 @@
+{
+  "name": "cv-belgazprombank",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Интерактивное резюме-кейс: специалист управления внедрения и развития ИС (системный аналитик)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.6.3",
+    "vite": "^6.0.7"
+  }
+}
