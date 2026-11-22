@@ -17,6 +17,7 @@ interface Attrs {
   placeholder?: string;
   ariaLabel?: string;
   ariaHidden?: string;
+  ariaSelected?: string;
   role?: string;
   tabIndex?: number;
   draggable?: boolean;
@@ -62,6 +63,8 @@ export function el<K extends keyof HTMLElementTagNameMap>(
       node.setAttribute('aria-label', String(value));
     } else if (key === 'ariaHidden') {
       node.setAttribute('aria-hidden', String(value));
+    } else if (key === 'ariaSelected') {
+      node.setAttribute('aria-selected', String(value));
     } else {
       node.setAttribute(key, String(value));
     }
